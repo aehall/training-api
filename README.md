@@ -1,5 +1,11 @@
 # Infrastructure for API Training
-This repo contains PostgresSQL DB code and C# DB access code that can be used as infrastructure for building a RESTful API.
+This repo contains PostgresSQL DB code and C# DB access code that can be used as infrastructure for building a RESTful API. 
+
+Use the following instructions to set up your database.
+
+The C# solution already has a WebAPI project with a repository class that communicates with the database. Your API controller can use the repository to send and receive data.
+
+You'll need to create a test project to practice test-driven development as you fill out the API.
 
 ## Setting up your database
 1. [Download PostgresSql](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads).
