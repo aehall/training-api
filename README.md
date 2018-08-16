@@ -1,4 +1,7 @@
-# Set up your database
+# Infrastructure for API Training
+This repo contains PostgresSQL DB code and C# DB access code that can be used as infrastructure for building a RESTful API.
+
+## Setting up your database
 1. [Download PostgresSql](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads).
 2. Install PostgresSql using the file you just downloaded.
 3. When prompted, use "password" as the password for your DB admin user (postgres).
