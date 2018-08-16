@@ -11,6 +11,7 @@ You'll need to create a test project to practice test-driven development as you 
 1. [Download PostgresSql](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads).
 2. Install PostgresSql using the file you just downloaded.
 3. When prompted, use "password" as the password for your DB admin user (postgres).
+`NOTE: When prompted, you don't need to install any of the StackBuilder applications. Just click Cancel.`
 4. Download [PGAdmin](https://www.pgadmin.org/download/pgadmin-4-windows/).
 5. Install PGAdmin using the file you just downloaded.
 6. Open PGAdmin.
