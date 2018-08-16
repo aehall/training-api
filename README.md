@@ -20,4 +20,4 @@ You'll need to create a test project to practice test-driven development as you 
 9. Click __Save__. The dialog closes.
 10. In the left pane, in the __Object Browser__, click the new table.
 11. Click the __Tool__ menu and select __Query Tool__.
-12. In the query editor, run each of the scripts in the database-setup.sql file. You may have to run them one at a time.
+12. In the query editor, run scripts in the database-setup.sql file. You can run them all at the same time.
