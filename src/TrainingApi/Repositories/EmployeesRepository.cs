@@ -4,9 +4,9 @@ using TrainingApi.Models;
 using Npgsql;
 using System.Data;
 
-namespace TrainingApi
+namespace TrainingApi.Repositories
 {
-    public class EmployeesRepository
+    public class EmployeesRepository : IEmployeesRepository
     {
         public List<Individual> GetAllIndividuals()
         {
