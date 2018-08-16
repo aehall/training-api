@@ -47,3 +47,35 @@ VALUES
     (1, 'Tim', 'Hays', 'Developer', 'thays@ebsco.com'),
     (2, 'Joanne', 'Adams', 'Developer', 'jadams@ebsco.com'),
     (3, 'Patty', 'Campbell', 'Developer', 'pcampbell@ebsco.com')
+
+----Create get_all_individuals() function----
+CREATE OR REPLACE FUNCTION get_all_individuals()
+	RETURNS TABLE (
+		id integer,
+		teamId integer,
+		firstName varchar(40),
+		lastName varchar(40),
+		title varchar(40),
+		emailAddress varchar(40)
+	) AS
+$func$
+BEGIN
+	RETURN QUERY
+	SELECT i.id, i.teamId, i.firstName, i.lastName, i.title, i.emailAddress
+	FROM individuals i;
+END
+$func$ LANGUAGE plpgsql;
+
+----Create get_all_teams() function----
+CREATE OR REPLACE FUNCTION get_all_teams()
+	RETURNS TABLE (
+		id integer,
+		name varchar(40)		
+	) AS
+$func$
+BEGIN
+	RETURN QUERY
+	SELECT t.id, t.name
+	FROM teams t;
+END
+$func$ LANGUAGE plpgsql;
