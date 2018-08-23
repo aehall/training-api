@@ -20,7 +20,8 @@ INSERT INTO teams
 VALUES
     (1, 'The Spartans'),
     (2, 'Vulcan'),
-    (3, 'Cheaha');
+    (3, 'Cheaha'),
+    (4, 'Red Mountain');
 
 ----Populate Individuals
 INSERT INTO individuals
@@ -29,7 +30,8 @@ VALUES
     (1, 'Aaron', 'Hall', 'Developer', 'aehall@ebsco.com'),
     (1, 'Tim', 'Hays', 'Developer', 'thays@ebsco.com'),
     (2, 'Joanne', 'Adams', 'Developer', 'jadams@ebsco.com'),
-    (3, 'Patty', 'Campbell', 'Developer', 'pcampbell@ebsco.com');
+    (3, 'Patty', 'Campbell', 'Developer', 'pcampbell@ebsco.com'),
+    (4, 'Ken', 'Hittie', 'Developer', 'khittie@ebsco.com');
 
 ----Create get_all_individuals() function----
 CREATE OR REPLACE FUNCTION get_all_individuals()
