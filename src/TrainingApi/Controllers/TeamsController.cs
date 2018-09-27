@@ -16,10 +16,9 @@ namespace TrainingApi.Controllers
         private IEmployeesRepository _employeesRepository;
         //Added for dependency injection //
         //This is a constructor //
-        public TeamsController(IEmployeesRepository employeesRepository) //IEmployeesRepository is a type employeesRepository is the name
+        internal TeamsController(IEmployeesRepository employeesRepository) //IEmployeesRepository is a type employeesRepository is the name
         {
             _employeesRepository = employeesRepository;
-
         }
 
         // empty constructor required by web API doesn't take parms - used in production 
@@ -41,9 +40,10 @@ namespace TrainingApi.Controllers
         
         // GET: api/Teams/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            var team = _employeesRepository.GetTeamById(id);
+            return Ok(team);
         }
         
         // POST: api/Teams

@@ -17,5 +17,10 @@ namespace TrainingAPI.Test
         {
             return TeamsToReturn;
         }
+
+        public Team GetTeamById(int id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
