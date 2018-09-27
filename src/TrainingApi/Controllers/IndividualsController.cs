@@ -16,9 +16,9 @@ namespace TrainingApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-           // var employeesRepository = new EmployeesRepository(); removed for now - for unit test
-            var individuals = employeesRepository.GetAllIndividuals();
-            return Ok(individuals);
+            // var employeesRepository = new EmployeesRepository(); removed for now - for unit test
+            //var individuals = employeesRepository.GetAllIndividuals();
+            return Ok();
         }
 
         // GET: api/Individuals/5 - this is a GET by id
