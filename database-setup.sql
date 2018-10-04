@@ -62,3 +62,17 @@ BEGIN
 	FROM teams t;
 END
 $func$ LANGUAGE plpgsql;
+
+----Create create_team() function----
+CREATE OR REPLACE FUNCTION create_team(
+    IN teamname text,
+    OUT outid integer)
+  RETURNS integer AS
+$func$
+BEGIN
+    INSERT INTO teams (id, name) 
+    VALUES (default, teamname)
+    RETURNING id
+    INTO outid;
+END
+$func$ LANGUAGE plpgsql;

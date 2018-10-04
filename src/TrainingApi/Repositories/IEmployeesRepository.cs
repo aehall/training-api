@@ -8,5 +8,6 @@ namespace TrainingApi.Repositories
         List<Individual> GetAllIndividuals();
         List<Team> GetAllTeams();
         Team GetTeamById(int id);
+        int CreateTeam(string teamName);
     }
 }

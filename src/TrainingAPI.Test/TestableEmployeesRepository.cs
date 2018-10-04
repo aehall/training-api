@@ -8,6 +8,11 @@ namespace TrainingAPI.Test
     {
         public List<Team> TeamsToReturn { get; set; }
 
+        public int CreateTeam(string teamName)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public List<Individual> GetAllIndividuals()
         {
             throw new System.NotImplementedException();

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TrainingApi.Models;
 using TrainingApi.Repositories;
 
 namespace TrainingApi.Controllers
@@ -48,8 +49,9 @@ namespace TrainingApi.Controllers
         
         // POST: api/Teams
         [HttpPost]
-        public void Post([FromBody]string value)
+        public IActionResult Post([FromBody]Team team)
         {
+            throw new NotImplementedException();
         }
         
         // PUT: api/Teams/5

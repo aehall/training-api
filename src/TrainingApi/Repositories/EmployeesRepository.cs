@@ -3,6 +3,7 @@ using System.Data.Common;
 using TrainingApi.Models;
 using Npgsql;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace TrainingApi.Repositories
 {
@@ -98,6 +99,29 @@ namespace TrainingApi.Repositories
             }
 
             return team;
+        }
+
+        public int CreateTeam(string teamName)
+        {
+            int id;
+
+            using (var connection = GetDatabaseConnection())
+            {
+                connection.Open();
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "create_team";
+                    command.Parameters.Add(new NpgsqlParameter("teamname", teamName));
+
+                    id = (int)command.ExecuteScalar();
+                }
+
+                connection.Close();
+            }
+
+            return id;
         }
 
         private NpgsqlConnection GetDatabaseConnection()
