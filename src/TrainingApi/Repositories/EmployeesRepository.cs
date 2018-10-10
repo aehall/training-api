@@ -3,6 +3,7 @@ using System.Data.Common;
 using TrainingApi.Models;
 using Npgsql;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace TrainingApi.Repositories
 {
@@ -45,33 +46,82 @@ namespace TrainingApi.Repositories
 
         public List<Team> GetAllTeams()
         {
-            var connection = GetDatabaseConnection();
-            connection.Open();
-
             var teams = new List<Team>();
 
-            using (var command = connection.CreateCommand())
+            using (var connection = GetDatabaseConnection())
             {
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "get_all_teams";
+                connection.Open();
 
-                using (var reader = command.ExecuteReader())
+                using (var command = connection.CreateCommand())
                 {
-                    if (reader.HasRows)
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "get_all_teams";
+
+                    using (var reader = command.ExecuteReader())
                     {
-                        while (reader.Read())
+                        if (reader.HasRows)
                         {
-                            teams.Add(new Team
+                            while (reader.Read())
                             {
-                                Id = reader.GetInt32(reader.GetOrdinal("id")),
-                                Name = reader.GetString(reader.GetOrdinal("name")),
-                            });
+                                teams.Add(new Team
+                                {
+                                    Id = reader.GetInt32(reader.GetOrdinal("id")),
+                                    Name = reader.GetString(reader.GetOrdinal("name")),
+                                });
+                            }
                         }
                     }
                 }
+
+                connection.Close();
             }
 
             return teams;
+        }
+
+        public Team GetTeamById(int id)
+        {
+            var team = new Team { Id = id };
+
+            using (var connection = GetDatabaseConnection())
+            {
+                connection.Open();
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = $"select name from teams where id = {id}";
+
+                    team.Name = (string)command.ExecuteScalar();
+                }
+
+                connection.Close();
+            }
+
+            return team;
+        }
+
+        public int CreateTeam(string teamName)
+        {
+            int id;
+
+            using (var connection = GetDatabaseConnection())
+            {
+                connection.Open();
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "create_team";
+                    command.Parameters.Add(new NpgsqlParameter("teamname", teamName));
+
+                    id = (int)command.ExecuteScalar();
+                }
+
+                connection.Close();
+            }
+
+            return id;
         }
 
         private NpgsqlConnection GetDatabaseConnection()
