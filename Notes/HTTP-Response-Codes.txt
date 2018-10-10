@@ -1,0 +1,15 @@
+HTTP Response Codes
+Ranges
+- 200s success
+- 400s error
+- 500 catastrophic server error
+
+Specific codes commonly used in our APIs
+- 200 OK (GETs)
+- 201 CREATED (POST)
+- 202 ACCEPTED (PUT)
+- 400 BAD REQUEST (POST)
+- 401 UNAUTHORIZED (you didn't supply credentials)
+- 403 FORBIDDEN (your credentials were rejected)
+- 404 NOT FOUND (GET)
+- 500 INTERNAL SERVER ERROR

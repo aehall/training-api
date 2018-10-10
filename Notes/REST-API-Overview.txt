@@ -1,0 +1,60 @@
+Good training course on REST API theory: -Pluralsight course: https://www.pluralsight.com/courses/web-api-design
+
+WEB APPLICATION STRUCTURE
+
+---Database on the backend---
+- PostgresSQL (for our training API)
+
+---UI on the frontend---
+- No matter which frameworks you use, it all boils down to HTML, JavaScript, CSS
+
+---Service to communicate between DB and UI---
+- "Old" way of doing it: SOAP service (WCF)
+	- Communicates using XML
+	- You can test using SoapUI / ReadyAPI / WCF Test Client
+	- Methods listed in WSDL
+		- GetIndividualById
+		- GetIndividualByName
+		- GetTeamByName
+	- Organized by verbs
+
+- "New" way of doing it: REST API
+	- Representational State Transfer
+	- Uses JSON for communication instead of XML
+	- HTTP verbs
+		- GET
+			- GET http://www.myfakewebsite.com/api/teams (get all the teams)
+			- GET http://www.myfakewebsite.com/api/teams/1 (get the team with an ID=1)
+		- POST (create) ----> Postman
+			- POST http://www.myfakewebsite.com/api/teams
+			- Include JSON object with new team to create
+		- PUT (update, create)
+			- PUT http://www.myfakewebsite.com/api/teams/1
+			- Include JSON object with updated team
+		- DELETE
+			- DELETE http://www.myfakewebsite.com/api/teams/1
+		- PATCH (partial update; not used as often)
+			- PUT http://www.myfakewebsite.com/api/teams/1
+			- Include JSON object with ONLY the updated fields
+	- Endpoints organized by noun: /teams, /individuals, etc. (verbs are handled by the HTTP verbs)
+	- Endpoints will always be named with plural
+------------------
+
+
+Within a REST API solution
+
+-Controller: entry point
+	- Defines what to do with a given request: GET? POST? DELETE?
+
+-Repository (maybe called a service): 
+	- Responsible for communicating with the DB
+
+-Model (public-facing data)
+	- Representation of the client-facing data 
+	- Not the same as your database structure; you make the data look how your consumers expect it to look
+	- Also allows you to hide database details that you don't want the outside world to know about
+	- "Sort of" synonymous with data transfer object (DTO)
+
+-Entity (internally-facing data)
+	- More closely resembles the actual database
+	- "Sort of" synonymous with data access object (DAO)
